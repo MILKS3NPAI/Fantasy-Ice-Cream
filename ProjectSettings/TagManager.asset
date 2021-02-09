@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - IceCreamBox
   layers:
   - Default
   - TransparentFX
@@ -38,6 +39,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Below Player
+    uniqueID: 622275787
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: above_player
+    uniqueID: 270608149
     locked: 0

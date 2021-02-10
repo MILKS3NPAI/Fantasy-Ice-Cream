@@ -9,6 +9,7 @@ public class IceCreamBox : MonoBehaviour
     public Text dialogText;
     public string dialog;
     public bool playerInRange;
+    public bool add = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,16 +22,10 @@ public class IceCreamBox : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && playerInRange)
         {
-            if(dialogbox.activeInHierarchy)
-            {
-                dialogbox.SetActive(false);
-            }
-            else
-            {
-                dialogbox.SetActive(true);
-                dialogText.text = dialog;
-            }
+            dialogbox.SetActive(true);
+            dialogText.text = dialog;
         }
+       
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

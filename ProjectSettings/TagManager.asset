@@ -6,6 +6,9 @@ TagManager:
   tags:
   - IceCreamBox
   - IceCreamDisplay
+  - Customer
+  - IceCreamNotif
+  - Notif
   layers:
   - Default
   - TransparentFX

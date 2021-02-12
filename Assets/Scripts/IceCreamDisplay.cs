@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class IceCreamDisplay : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class IceCreamDisplay : MonoBehaviour
     //Cone
     public GameObject ConeBox;
     public GameObject cone;
-    public bool conePresent;
+    public bool conePresent = false;
     //display ice cream
     public GameObject van;
     public GameObject choco;
@@ -17,7 +18,9 @@ public class IceCreamDisplay : MonoBehaviour
     public GameObject IB1;
     public GameObject IB2;
     public GameObject IB3;
-
+    //others
+    public List<int> currentOrder = new List<int>();
+    public int FV;
     public int stack = 0;
     
     private void Start()
@@ -30,15 +33,18 @@ public class IceCreamDisplay : MonoBehaviour
         {
             if (IB1.GetComponent<IceCreamBox>().playerInRange == true)
             {
+                FV = 1;
                 scoop(van);
             }
             else if (IB2.GetComponent<IceCreamBox>().playerInRange == true)
             {
+                FV = 2;
                 scoop(choco);
             }
             else if (IB3.GetComponent<IceCreamBox>().playerInRange == true)
             {
-                scoop(straw);
+                FV = 3;
+                scoop(straw);     
             }
 
         }
@@ -48,14 +54,27 @@ public class IceCreamDisplay : MonoBehaviour
             Clear();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && (ConeBox.GetComponent<ConeBox>().playerInRange == true) && stack ==0)
+        if (Input.GetKeyDown(KeyCode.Space) && (ConeBox.GetComponent<ConeBox>().playerInRange == true) && stack == 0)
         {
-            cone = Instantiate(cone, new Vector3(0, 0, 0), Quaternion.identity);
-            cone.transform.SetParent(transform, false);
-            cone.transform.localPosition = new Vector2(0, -190);
-            cone.transform.rotation *= Quaternion.Euler(0, 0, 180);
-            cone.SetActive(true);
-            conePresent = true;
+           
+            if (conePresent == false)
+            {
+                ConeBox.GetComponent<ConeBox>().dialogbox.SetActive(true);
+                ConeBox.GetComponent<ConeBox>().dialogText.text = "You Got Cone";
+                cone = Instantiate(cone, new Vector3(0, 0, 0), Quaternion.identity);
+                cone.transform.SetParent(transform, false);
+                cone.transform.localPosition = new Vector2(0, -190);
+                cone.transform.rotation *= Quaternion.Euler(0, 0, 180);
+                cone.SetActive(true);
+                conePresent = true;
+            }
+
+
+            else if (conePresent == true)
+            {
+                ConeBox.GetComponent<ConeBox>().dialogbox.SetActive(true);
+                ConeBox.GetComponent<ConeBox>().dialogText.text = "You already have a Cone";
+            }
         }
     }
 
@@ -66,6 +85,7 @@ public class IceCreamDisplay : MonoBehaviour
         x.SetActive(true);
         x.transform.localPosition = new Vector2(0, (-90 + (100 * stack)));
         stack++;
+        currentOrder.Add(FV);
     }
 
   
@@ -91,6 +111,7 @@ public class IceCreamDisplay : MonoBehaviour
             child.SetActive(false);
         }
         stack = 0;
+        currentOrder.Clear();
         conePresent = false;
     }
 }

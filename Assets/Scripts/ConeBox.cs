@@ -20,21 +20,7 @@ public class ConeBox : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && playerInRange)
-        {
-            if (ICDisplay.GetComponent<IceCreamDisplay>().conePresent == false)
-            {
-                dialogbox.SetActive(true);
-                dialogText.text = dialog;
-            }
 
-
-            else if (ICDisplay.GetComponent<IceCreamDisplay>().conePresent == true)
-            {
-                dialogbox.SetActive(true);
-                dialogText.text = "You already have a Cone";
-            }
-        }
 
     }
 

@@ -3,40 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class IceCreamBox : MonoBehaviour
+public class ConeBox : MonoBehaviour
 {
     public GameObject ICDisplay;
     public GameObject dialogbox;
     public Text dialogText;
     public string dialog;
     public bool playerInRange;
-   
 
-    // Start is called before the first frame update
+
     void Start()
     {
         ICDisplay = GameObject.FindGameObjectWithTag("IceCreamDisplay");
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) && playerInRange)
         {
-            if (ICDisplay.GetComponent<IceCreamDisplay>().conePresent == true)
+            if (ICDisplay.GetComponent<IceCreamDisplay>().conePresent == false)
             {
                 dialogbox.SetActive(true);
                 dialogText.text = dialog;
             }
-       
 
-            else if (ICDisplay.GetComponent<IceCreamDisplay>().conePresent == false)
+
+            else if (ICDisplay.GetComponent<IceCreamDisplay>().conePresent == true)
             {
                 dialogbox.SetActive(true);
-                dialogText.text = "Get Cone First";
+                dialogText.text = "You already have a Cone";
             }
         }
-       
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

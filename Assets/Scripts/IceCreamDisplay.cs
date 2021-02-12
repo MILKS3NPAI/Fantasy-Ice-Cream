@@ -5,7 +5,10 @@ using UnityEngine;
 public class IceCreamDisplay : MonoBehaviour
 {
     public GameObject display;
+    //Cone
+    public GameObject ConeBox;
     public GameObject cone;
+    public bool conePresent;
     //display ice cream
     public GameObject van;
     public GameObject choco;
@@ -23,21 +26,36 @@ public class IceCreamDisplay : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && (IB1.GetComponent<IceCreamBox>().playerInRange == true) && stack < 5)
+        if (Input.GetKeyDown(KeyCode.Space) && stack < 5 && conePresent == true)
         {
-            scoop(van);
+            if (IB1.GetComponent<IceCreamBox>().playerInRange == true)
+            {
+                scoop(van);
+            }
+            else if (IB2.GetComponent<IceCreamBox>().playerInRange == true)
+            {
+                scoop(choco);
+            }
+            else if (IB3.GetComponent<IceCreamBox>().playerInRange == true)
+            {
+                scoop(straw);
+            }
+
         }
-        else if (Input.GetKeyDown(KeyCode.Space) && (IB2.GetComponent<IceCreamBox>().playerInRange == true) && stack < 5)
-        {
-            scoop(choco);
-        }
-        else if (Input.GetKeyDown(KeyCode.Space) && (IB3.GetComponent<IceCreamBox>().playerInRange == true) && stack < 5)
-        {
-            scoop(straw);
-        }
+   
         if (Input.GetKeyDown(KeyCode.Q))
         {
             Clear();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && (ConeBox.GetComponent<ConeBox>().playerInRange == true) && stack ==0)
+        {
+            cone = Instantiate(cone, new Vector3(0, 0, 0), Quaternion.identity);
+            cone.transform.SetParent(transform, false);
+            cone.transform.localPosition = new Vector2(0, -190);
+            cone.transform.rotation *= Quaternion.Euler(0, 0, 180);
+            cone.SetActive(true);
+            conePresent = true;
         }
     }
 
@@ -49,6 +67,8 @@ public class IceCreamDisplay : MonoBehaviour
         x.transform.localPosition = new Vector2(0, (-90 + (100 * stack)));
         stack++;
     }
+
+  
 
     public void Clear()
     {
@@ -71,12 +91,6 @@ public class IceCreamDisplay : MonoBehaviour
             child.SetActive(false);
         }
         stack = 0;
-
-        cone = Instantiate(cone, new Vector3 (0, 0, 0), Quaternion.identity);
-        cone.transform.SetParent(transform, false);
-        cone.transform.localPosition = new Vector2(0, -190);
-        cone.transform.rotation *= Quaternion.Euler(0, 0, 180);
-        cone.SetActive(true);
-  
+        conePresent = false;
     }
 }

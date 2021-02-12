@@ -863,7 +863,7 @@ GameObject:
   - component: {fileID: 546598147}
   m_Layer: 5
   m_Name: IceCreamDisplay
-  m_TagString: Untagged
+  m_TagString: IceCreamDisplay
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -888,8 +888,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -107.100006, y: 3.4}
-  m_SizeDelta: {x: 146.00757, y: 855.1184}
+  m_AnchoredPosition: {x: -107.100006, y: 3}
+  m_SizeDelta: {x: 146.00757, y: 786.93115}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &546598145
 MonoBehaviour:
@@ -942,7 +942,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   display: {fileID: 546598143}
+  ConeBox: {fileID: 1664377159163595249}
   cone: {fileID: 533925117495906568, guid: 091f1f6236cde0245a5959c5c44ea3e7, type: 3}
+  conePresent: 0
   van: {fileID: 2652102962270416428, guid: 3ce6b09826765f24da03df598b6692db, type: 3}
   choco: {fileID: 1379874240898268181, guid: 0227f1e13e988ee4aabbe40ba18dc1a3, type: 3}
   straw: {fileID: 2010915097964923522, guid: 9f481a69c5035374386f8ce1a9232f23, type: 3}
@@ -1319,11 +1321,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99b2c21072c519c4885e41c8d562c3cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ICDisplay: {fileID: 0}
   dialogbox: {fileID: 2058723648}
   dialogText: {fileID: 2014208137}
   dialog: You got Strawberry
   playerInRange: 0
-  add: 0
 --- !u!61 &1416268567
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1473,11 +1475,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99b2c21072c519c4885e41c8d562c3cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ICDisplay: {fileID: 0}
   dialogbox: {fileID: 2058723648}
   dialogText: {fileID: 2014208137}
   dialog: You got Chocolate
   playerInRange: 0
-  add: 0
 --- !u!61 &1443497112
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1631,6 +1633,7 @@ Transform:
   - {fileID: 285662663}
   - {fileID: 1443497115}
   - {fileID: 1416268570}
+  - {fileID: 1664377159163595252}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1799,6 +1802,75 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1379874240898268180, guid: 0227f1e13e988ee4aabbe40ba18dc1a3, type: 3}
   m_PrefabInstance: {fileID: 1379874241586010367}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &9490312941040459
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1610767832}
+    m_Modifications:
+    - target: {fileID: 1673291044538563258, guid: dcfeb03a8cc4547499a161d0897e132b, type: 3}
+      propertyPath: m_Name
+      value: ConeBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 1673291044538563259, guid: dcfeb03a8cc4547499a161d0897e132b, type: 3}
+      propertyPath: dialogbox
+      value: 
+      objectReference: {fileID: 2058723648}
+    - target: {fileID: 1673291044538563259, guid: dcfeb03a8cc4547499a161d0897e132b, type: 3}
+      propertyPath: dialogText
+      value: 
+      objectReference: {fileID: 2014208137}
+    - target: {fileID: 1673291044538563259, guid: dcfeb03a8cc4547499a161d0897e132b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1673291044538563263, guid: dcfeb03a8cc4547499a161d0897e132b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.424826
+      objectReference: {fileID: 0}
+    - target: {fileID: 1673291044538563263, guid: dcfeb03a8cc4547499a161d0897e132b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.4283676
+      objectReference: {fileID: 0}
+    - target: {fileID: 1673291044538563263, guid: dcfeb03a8cc4547499a161d0897e132b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.6594472
+      objectReference: {fileID: 0}
+    - target: {fileID: 1673291044538563263, guid: dcfeb03a8cc4547499a161d0897e132b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1673291044538563263, guid: dcfeb03a8cc4547499a161d0897e132b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1673291044538563263, guid: dcfeb03a8cc4547499a161d0897e132b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1673291044538563263, guid: dcfeb03a8cc4547499a161d0897e132b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1673291044538563263, guid: dcfeb03a8cc4547499a161d0897e132b, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1673291044538563263, guid: dcfeb03a8cc4547499a161d0897e132b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1673291044538563263, guid: dcfeb03a8cc4547499a161d0897e132b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1673291044538563263, guid: dcfeb03a8cc4547499a161d0897e132b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dcfeb03a8cc4547499a161d0897e132b, type: 3}
 --- !u!1001 &533925116698022495
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1893,6 +1965,10 @@ PrefabInstance:
     - target: {fileID: 533925117495906568, guid: 091f1f6236cde0245a5959c5c44ea3e7, type: 3}
       propertyPath: m_Name
       value: cone
+      objectReference: {fileID: 0}
+    - target: {fileID: 533925117495906568, guid: 091f1f6236cde0245a5959c5c44ea3e7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 091f1f6236cde0245a5959c5c44ea3e7, type: 3}
@@ -1993,6 +2069,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0227f1e13e988ee4aabbe40ba18dc1a3, type: 3}
+--- !u!1 &1664377159163595249 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1673291044538563258, guid: dcfeb03a8cc4547499a161d0897e132b, type: 3}
+  m_PrefabInstance: {fileID: 9490312941040459}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1664377159163595250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664377159163595249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5525eb2f0b6d5794a9358421ef95d781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ICDisplay: {fileID: 546598143}
+  dialogbox: {fileID: 2058723648}
+  dialogText: {fileID: 2014208137}
+  dialog: You got Cone
+  playerInRange: 0
+--- !u!4 &1664377159163595252 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1673291044538563263, guid: dcfeb03a8cc4547499a161d0897e132b, type: 3}
+  m_PrefabInstance: {fileID: 9490312941040459}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2010915098415344795
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2202,6 +2305,10 @@ PrefabInstance:
       propertyPath: dialogText
       value: 
       objectReference: {fileID: 2014208137}
+    - target: {fileID: 6865029211468230474, guid: 15665ac891ca7134ba28de5300ad3416, type: 3}
+      propertyPath: ICDisplay
+      value: 
+      objectReference: {fileID: 546598143}
     - target: {fileID: 6865029211468230475, guid: 15665ac891ca7134ba28de5300ad3416, type: 3}
       propertyPath: m_Name
       value: IceCreamBox_Vanilla

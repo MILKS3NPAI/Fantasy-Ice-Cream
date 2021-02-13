@@ -31,24 +31,10 @@ public class IceCreamDisplay : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && stack < 5 && conePresent == true)
         {
-            if (IB1.GetComponent<IceCreamBox>().playerInRange == true)
-            {
-                FV = 1;
-                scoop(van);
-            }
-            else if (IB2.GetComponent<IceCreamBox>().playerInRange == true)
-            {
-                FV = 2;
-                scoop(choco);
-            }
-            else if (IB3.GetComponent<IceCreamBox>().playerInRange == true)
-            {
-                FV = 3;
-                scoop(straw);     
-            }
+            GetIceCream();
 
         }
-   
+
         if (Input.GetKeyDown(KeyCode.Q))
         {
             Clear();
@@ -56,29 +42,51 @@ public class IceCreamDisplay : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && (ConeBox.GetComponent<ConeBox>().playerInRange == true) && stack == 0)
         {
-           
-            if (conePresent == false)
-            {
-                ConeBox.GetComponent<ConeBox>().dialogbox.SetActive(true);
-                ConeBox.GetComponent<ConeBox>().dialogText.text = "You Got Cone";
-                cone = Instantiate(cone, new Vector3(0, 0, 0), Quaternion.identity);
-                cone.transform.SetParent(transform, false);
-                cone.transform.localPosition = new Vector2(0, -190);
-                cone.transform.rotation *= Quaternion.Euler(0, 0, 180);
-                cone.SetActive(true);
-                conePresent = true;
-            }
-
-
-            else if (conePresent == true)
-            {
-                ConeBox.GetComponent<ConeBox>().dialogbox.SetActive(true);
-                ConeBox.GetComponent<ConeBox>().dialogText.text = "You already have a Cone";
-            }
+            GetCone();
         }
     }
 
-    void scoop(GameObject x)
+    private void GetCone()
+    {
+        if (conePresent == false)
+        {
+            ConeBox.GetComponent<ConeBox>().dialogbox.SetActive(true);
+            ConeBox.GetComponent<ConeBox>().dialogText.text = "You Got Cone";
+            cone = Instantiate(cone, new Vector3(0, 0, 0), Quaternion.identity);
+            cone.transform.SetParent(transform, false);
+            cone.transform.localPosition = new Vector2(0, -190);
+            cone.transform.rotation *= Quaternion.Euler(0, 0, 180);
+            cone.SetActive(true);
+            conePresent = true;
+        }
+
+        else if (conePresent == true)
+        {
+            ConeBox.GetComponent<ConeBox>().dialogbox.SetActive(true);
+            ConeBox.GetComponent<ConeBox>().dialogText.text = "You already have a Cone";
+        }
+    }
+
+    private void GetIceCream()
+    {
+        if (IB1.GetComponent<IceCreamBox>().playerInRange == true)
+        {
+            FV = 1;
+            Scoop(van);
+        }
+        else if (IB2.GetComponent<IceCreamBox>().playerInRange == true)
+        {
+            FV = 2;
+            Scoop(choco);
+        }
+        else if (IB3.GetComponent<IceCreamBox>().playerInRange == true)
+        {
+            FV = 3;
+            Scoop(straw);
+        }
+    }
+
+    void Scoop(GameObject x)
     {
         x = Instantiate(x, new Vector2(0, 0), Quaternion.identity);
         x.transform.SetParent(transform, false);

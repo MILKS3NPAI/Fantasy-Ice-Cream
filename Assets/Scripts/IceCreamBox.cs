@@ -12,31 +12,34 @@ public class IceCreamBox : MonoBehaviour
     public bool playerInRange;
    
 
-    // Start is called before the first frame update
     void Start()
     {
         ICDisplay = GameObject.FindGameObjectWithTag("IceCreamDisplay");
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) && playerInRange)
         {
-            if (ICDisplay.GetComponent<IceCreamDisplay>().conePresent == true)
-            {
-                dialogbox.SetActive(true);
-                dialogText.text = dialog;
-            }
-       
-
-            else if (ICDisplay.GetComponent<IceCreamDisplay>().conePresent == false)
-            {
-                dialogbox.SetActive(true);
-                dialogText.text = "Get Cone First";
-            }
+            IceCreamNotification();
         }
-       
+
+    }
+
+    private void IceCreamNotification()
+    {
+        if (ICDisplay.GetComponent<IceCreamDisplay>().conePresent == true)
+        {
+            dialogbox.SetActive(true);
+            dialogText.text = dialog;
+        }
+
+
+        else if (ICDisplay.GetComponent<IceCreamDisplay>().conePresent == false)
+        {
+            dialogbox.SetActive(true);
+            dialogText.text = "Get Cone First";
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

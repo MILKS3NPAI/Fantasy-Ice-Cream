@@ -86,7 +86,7 @@ public class CustomerAI : MonoBehaviour
         if (playerOrder.SequenceEqual(myOrder) == true)
         {
             dialogbox.SetActive(true);
-            dialogText.text = "Thank You!";
+            dialogText.text = "Thank you!";
             playerIC.GetComponent<IceCreamDisplay>().Clear();
             orderDone = true;
             movement.x = 1;
@@ -95,7 +95,7 @@ public class CustomerAI : MonoBehaviour
         else
         {
             dialogbox.SetActive(true);
-            dialogText.text = "wtf";
+            dialogText.text = "This isn't my order!";
         }
     }
 

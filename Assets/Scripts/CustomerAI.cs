@@ -14,25 +14,28 @@ public class CustomerAI : MonoBehaviour
     bool orderDone;
     bool enteringShop = true;
     bool moving;
-    //lists
+    //Lists
     public List<int> myOrder = new List<int>();
     public List<int> playerOrder = new List<int>();
     //Order Generator
     int FV;
     public int stackLimit;
-    //Animator
+    //Animator/movement
     public float moveSpeed = 5f;
     public Animator animator;
     public Rigidbody2D rb;
     public Vector2 target;
     public Vector2 position;
     Vector2 movement;
-
+    //Patience
+    public PatienceScript patienceBar;
+    public GameObject bar;
+    public int maxPatience = 30;
+    public float currentPatience;
 
 
     void Start()
-    {
-        
+    {   
         playerIC = GameObject.FindGameObjectWithTag("IceCreamDisplay");
         stackLimit = Random.Range(1, 6);
         target = new Vector2(-5.5f, 0f);
@@ -44,6 +47,10 @@ public class CustomerAI : MonoBehaviour
             myOrder.Add(FV);
         }
         rb.isKinematic = true;
+
+        currentPatience = maxPatience;
+        patienceBar.SetMaxPatience(maxPatience);
+        patienceBar.SetPatience(currentPatience);
     }
 
     
@@ -53,7 +60,25 @@ public class CustomerAI : MonoBehaviour
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("speed", movement.sqrMagnitude);
 
-
+        //Patience Timer
+        if (enteringShop != true)
+        {
+            if (currentPatience > 0)
+            {
+                currentPatience -= Time.deltaTime;
+                patienceBar.SetPatience(currentPatience);
+            }
+            else
+            {
+                movement.x = 1;
+                bar.SetActive(false);
+            }
+           
+        }
+        if (orderDone == true)
+        {
+            bar.SetActive(false);
+        }
 
         //Position Check
         position = gameObject.transform.position;

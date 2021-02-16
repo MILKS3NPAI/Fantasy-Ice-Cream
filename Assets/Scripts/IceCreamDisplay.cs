@@ -20,7 +20,8 @@ public class IceCreamDisplay : MonoBehaviour
     public GameObject IB3;
     //others
     public List<int> currentOrder = new List<int>();
-    public int FV;
+    FlavorValue FV;
+    enum FlavorValue {Vanilla = 1, Chocolate, Strawberry};
     public int stack = 0;
     
     private void Start()
@@ -71,17 +72,17 @@ public class IceCreamDisplay : MonoBehaviour
     {
         if (IB1.GetComponent<IceCreamBox>().playerInRange == true)
         {
-            FV = 1;
+            FV = FlavorValue.Vanilla;
             Scoop(van);
         }
         else if (IB2.GetComponent<IceCreamBox>().playerInRange == true)
         {
-            FV = 2;
+            FV = FlavorValue.Chocolate;
             Scoop(choco);
         }
         else if (IB3.GetComponent<IceCreamBox>().playerInRange == true)
         {
-            FV = 3;
+            FV = FlavorValue.Strawberry;
             Scoop(straw);
         }
     }
@@ -93,7 +94,7 @@ public class IceCreamDisplay : MonoBehaviour
         x.SetActive(true);
         x.transform.localPosition = new Vector2(0, (-90 + (100 * stack)));
         stack++;
-        currentOrder.Add(FV);
+        currentOrder.Add((int)FV);
     }
 
   

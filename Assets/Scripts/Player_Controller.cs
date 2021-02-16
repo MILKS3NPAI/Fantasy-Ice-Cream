@@ -17,6 +17,7 @@ public class Player_Controller : MonoBehaviour
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("speed", movement.sqrMagnitude);
+
             //Prevent increased speed during diagonal movement
         if (animator.GetFloat("speed") > 1f)
         {

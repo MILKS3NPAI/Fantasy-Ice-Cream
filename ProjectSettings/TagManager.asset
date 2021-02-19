@@ -9,6 +9,7 @@ TagManager:
   - Customer
   - IceCreamNotif
   - Notif
+  - Stopper
   layers:
   - Default
   - TransparentFX

@@ -92,7 +92,8 @@ public class IceCreamDisplay : MonoBehaviour
         x = Instantiate(x, new Vector2(0, 0), Quaternion.identity);
         x.transform.SetParent(transform, false);
         x.SetActive(true);
-        x.transform.localPosition = new Vector2(0, (-90 + (100 * stack)));
+        x.transform.localPosition = new Vector2(0, (-90 + (80 * stack)));
+        x.GetComponent<Image>().rectTransform.sizeDelta = new Vector2(150, 150);
         stack++;
         currentOrder.Add((int)FV);
     }

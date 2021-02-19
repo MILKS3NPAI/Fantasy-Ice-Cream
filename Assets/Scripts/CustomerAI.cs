@@ -35,7 +35,7 @@ public class CustomerAI : MonoBehaviour
 
 
     void Start()
-    {   
+    {
         playerIC = GameObject.FindGameObjectWithTag("IceCreamDisplay");
         stackLimit = Random.Range(1, 6);
         target = new Vector2(-5.5f, 0f);
@@ -99,6 +99,7 @@ public class CustomerAI : MonoBehaviour
         }
     }
 
+
     private void FixedUpdate()
     {
       
@@ -130,6 +131,14 @@ public class CustomerAI : MonoBehaviour
         {
             playerInRange = true;
            
+        }
+
+        if (collision.CompareTag("Stopper") && enteringShop == true)
+        {
+            movement.x = 0;
+            movement.y = 0;
+            enteringShop = false;
+
         }
     }
 

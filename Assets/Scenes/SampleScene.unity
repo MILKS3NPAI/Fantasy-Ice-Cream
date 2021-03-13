@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &23563757 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2652102962270416428, guid: 3ce6b09826765f24da03df598b6692db, type: 3}
+  m_PrefabInstance: {fileID: 240622808}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &240622808
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -397,7 +402,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 533925117495906568, guid: 091f1f6236cde0245a5959c5c44ea3e7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 091f1f6236cde0245a5959c5c44ea3e7, type: 3}
@@ -1339,6 +1344,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2652102962270416427, guid: 3ce6b09826765f24da03df598b6692db, type: 3}
   m_PrefabInstance: {fileID: 240622808}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &825183023 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2652102962270416428, guid: 3ce6b09826765f24da03df598b6692db, type: 3}
+  m_PrefabInstance: {fileID: 1287285981}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &993119750
 GameObject:
   m_ObjectHideFlags: 0
@@ -1827,13 +1837,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Customer 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1204512269106890889, guid: 0ccb7f658048f014385d9c437a013274, type: 3}
-      propertyPath: m_AnchorMax.x
+    - target: {fileID: 1204512267630500983, guid: 0ccb7f658048f014385d9c437a013274, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1204512269106890889, guid: 0ccb7f658048f014385d9c437a013274, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1204512269106890889, guid: 0ccb7f658048f014385d9c437a013274, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ccb7f658048f014385d9c437a013274, type: 3}
@@ -2063,7 +2077,7 @@ GameObject:
   - component: {fileID: 1302303487}
   - component: {fileID: 1302303486}
   m_Layer: 5
-  m_Name: Tex body
+  m_Name: Text body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2780,6 +2794,12 @@ MonoBehaviour:
   myOrder: 
   playerOrder: 
   stackLimit: 0
+  stack: 0
+  TextBubble: {fileID: 1302303484}
+  OrderDisplay: {fileID: 1974893962}
+  van: {fileID: 23563757}
+  choco: {fileID: 2564119245237807920}
+  straw: {fileID: 825183023}
   moveSpeed: 5
   animator: {fileID: 1927081175}
   rb: {fileID: 1927081176}

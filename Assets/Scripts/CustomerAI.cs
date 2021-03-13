@@ -18,8 +18,16 @@ public class CustomerAI : MonoBehaviour
     public List<int> myOrder = new List<int>();
     public List<int> playerOrder = new List<int>();
     //Order Generator
-    int FV;
+    FlavorValue FV;
+    enum FlavorValue { Vanilla = 1, Chocolate, Strawberry};
     public int stackLimit;
+    public int stack = 0;
+    //display ice cream
+    public GameObject TextBubble;
+    public GameObject OrderDisplay;
+    public GameObject van;
+    public GameObject choco;
+    public GameObject straw;
     //Animator/movement
     public float moveSpeed = 5f;
     public Animator animator;
@@ -43,14 +51,33 @@ public class CustomerAI : MonoBehaviour
 
         for (int i = 0; i < stackLimit; i++)
         {
-            FV = Random.Range(1, 4);
-            myOrder.Add(FV);
+            FV = (FlavorValue)Random.Range(1, 4);
+            switch (FV)
+            {
+                case FlavorValue.Vanilla:
+                    addToOrder(van);
+                    break;
+                case FlavorValue.Chocolate:
+                    addToOrder(choco);
+                    break;
+                case FlavorValue.Strawberry:
+                    addToOrder(straw);
+                    break;
+
+            }
+            
+        }
+
+        for (int i = 0; i < myOrder.Count; i++)
+        {
+            
         }
         rb.isKinematic = true;
 
         currentPatience = maxPatience;
         patienceBar.SetMaxPatience(maxPatience);
         patienceBar.SetPatience(currentPatience);
+        TextBubble.SetActive(false);
     }
 
     
@@ -71,13 +98,14 @@ public class CustomerAI : MonoBehaviour
             else
             {
                 movement.x = 1;
-                bar.SetActive(false);
+                TextBubble.SetActive(false);
             }
            
         }
         if (orderDone == true)
         {
             bar.SetActive(false);
+            TextBubble.SetActive(false);
         }
 
         //Position Check
@@ -138,7 +166,7 @@ public class CustomerAI : MonoBehaviour
             movement.x = 0;
             movement.y = 0;
             enteringShop = false;
-
+            TextBubble.SetActive(true);
         }
     }
 
@@ -151,4 +179,15 @@ public class CustomerAI : MonoBehaviour
         }
     }
 
+    void addToOrder(GameObject x)
+    {
+        x = Instantiate(x, new Vector2(0, 0), Quaternion.identity);
+        x.transform.SetParent(OrderDisplay.transform);
+        x.SetActive(true);
+        x.transform.localPosition = new Vector2(1, (-9 + (10 * stack)));
+        x.GetComponent<Image>().rectTransform.sizeDelta = new Vector2(20, 20);
+        x.GetComponent<Image>().transform.localScale = new Vector3(1, 1, 0);
+        stack++;
+        myOrder.Add((int)FV);
+    }
 }

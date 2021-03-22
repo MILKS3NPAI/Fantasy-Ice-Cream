@@ -10,8 +10,8 @@ public class CustomerAI : MonoBehaviour
     GameObject playerIC;
     public GameObject dialogbox;
     public Text dialogText;
+    public bool orderDone;
     bool playerInRange;
-    bool orderDone;
     bool enteringShop = true;
     bool moving;
     //Lists
@@ -40,7 +40,6 @@ public class CustomerAI : MonoBehaviour
     public GameObject bar;
     public int maxPatience = 30;
     public float currentPatience;
-
 
     void Start()
     {

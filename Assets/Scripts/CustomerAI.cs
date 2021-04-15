@@ -115,10 +115,11 @@ public class CustomerAI : MonoBehaviour
         }
         else if (enteringShop == true)
         {
+            GetComponents<AudioSource>().ElementAt(0).Play();
             movement.x = 0;
             enteringShop = false;
         }
-      
+
 
         if (Input.GetKeyDown(KeyCode.Space) && playerInRange)
         {
@@ -143,6 +144,7 @@ public class CustomerAI : MonoBehaviour
             playerIC.GetComponent<IceCreamDisplay>().Clear();
             orderDone = true;
             movement.x = 1;
+            GetComponents<AudioSource>().ElementAt(1).Play();
         }
 
         else

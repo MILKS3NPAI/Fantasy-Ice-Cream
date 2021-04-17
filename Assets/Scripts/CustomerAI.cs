@@ -10,8 +10,8 @@ public class CustomerAI : MonoBehaviour
     GameObject playerIC;
     public GameObject dialogbox;
     public Text dialogText;
+    public bool orderDone;
     bool playerInRange;
-    bool orderDone;
     bool enteringShop = true;
     bool moving;
     //Lists
@@ -41,9 +41,11 @@ public class CustomerAI : MonoBehaviour
     public int maxPatience = 30;
     public float currentPatience;
 
-
     void Start()
     {
+        var obj = Resources.FindObjectsOfTypeAll<GameObject>();
+        dialogbox = obj.FirstOrDefault(g => g.CompareTag("IceCreamNotif"));
+        dialogText = obj.FirstOrDefault(g => g.CompareTag("Notif")).GetComponent<Text>();
         playerIC = GameObject.FindGameObjectWithTag("IceCreamDisplay");
         stackLimit = Random.Range(1, 6);
         target = new Vector2(-5.5f, 0f);
@@ -116,10 +118,11 @@ public class CustomerAI : MonoBehaviour
         }
         else if (enteringShop == true)
         {
+            GetComponents<AudioSource>().ElementAt(0).Play();
             movement.x = 0;
             enteringShop = false;
         }
-      
+
 
         if (Input.GetKeyDown(KeyCode.Space) && playerInRange)
         {
@@ -144,6 +147,7 @@ public class CustomerAI : MonoBehaviour
             playerIC.GetComponent<IceCreamDisplay>().Clear();
             orderDone = true;
             movement.x = 1;
+            GetComponents<AudioSource>().ElementAt(1).Play();
         }
 
         else

@@ -23,6 +23,7 @@ public class IceCreamDisplay : MonoBehaviour
     FlavorValue FV;
     enum FlavorValue {Vanilla = 1, Chocolate, Strawberry};
     public int stack = 0;
+    public AudioSource holyVanillaAudio;
     
     private void Start()
     {
@@ -74,6 +75,7 @@ public class IceCreamDisplay : MonoBehaviour
         {
             FV = FlavorValue.Vanilla;
             Scoop(van);
+            holyVanillaAudio.Play();
         }
         else if (IB2.GetComponent<IceCreamBox>().playerInRange == true)
         {

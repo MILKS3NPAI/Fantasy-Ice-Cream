@@ -23,8 +23,11 @@ public class IceCreamDisplay : MonoBehaviour
     FlavorValue FV;
     enum FlavorValue {Vanilla = 1, Chocolate, Strawberry};
     public int stack = 0;
+    public AudioSource coneAudio;
     public AudioSource holyVanillaAudio;
-    
+    public AudioSource midnightChocolateAudio;
+    public AudioSource strawBerryAudio;
+
     private void Start()
     {
 
@@ -60,6 +63,7 @@ public class IceCreamDisplay : MonoBehaviour
             cone.transform.rotation *= Quaternion.Euler(0, 0, 180);
             cone.SetActive(true);
             conePresent = true;
+            coneAudio.Play();
         }
 
         else if (conePresent == true)
@@ -81,11 +85,13 @@ public class IceCreamDisplay : MonoBehaviour
         {
             FV = FlavorValue.Chocolate;
             Scoop(choco);
+            midnightChocolateAudio.Play();
         }
         else if (IB3.GetComponent<IceCreamBox>().playerInRange == true)
         {
             FV = FlavorValue.Strawberry;
             Scoop(straw);
+            strawBerryAudio.Play();
         }
     }
 

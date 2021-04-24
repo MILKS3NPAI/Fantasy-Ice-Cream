@@ -40,6 +40,7 @@ public class CustomerAI : MonoBehaviour
     public GameObject bar;
     public int maxPatience = 30;
     public float currentPatience;
+    public static float score;
 
     void Start()
     {
@@ -148,6 +149,7 @@ public class CustomerAI : MonoBehaviour
             orderDone = true;
             movement.x = 1;
             GetComponents<AudioSource>().ElementAt(1).Play();
+            score += myOrder.Count * Mathf.Sqrt(currentPatience) * 0.5f;
         }
 
         else

@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &98967805 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3091981383655770762, guid: 7a5705cb09991974db369bef73121636, type: 3}
+  m_PrefabInstance: {fileID: 1508195450}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &285662658 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6865029211468230475, guid: 15665ac891ca7134ba28de5300ad3416, type: 3}
@@ -1384,8 +1389,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 2c1db12f4c28544428243258647890b0, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1577,6 +1582,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &821187580 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3091981383655770762, guid: 7a5705cb09991974db369bef73121636, type: 3}
+  m_PrefabInstance: {fileID: 3091981383945463387}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &910570501
 GameObject:
   m_ObjectHideFlags: 0
@@ -1973,7 +1983,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 2bd91a929bc11a3499a1dff85f29a726, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
@@ -2052,7 +2062,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 2bd91a929bc11a3499a1dff85f29a726, type: 3}
     m_FontSize: 50
     m_FontStyle: 1
     m_BestFit: 0
@@ -2930,6 +2940,22 @@ PrefabInstance:
       propertyPath: dialogText
       value: 
       objectReference: {fileID: 2014208137}
+    - target: {fileID: 3091981383655770765, guid: 7a5705cb09991974db369bef73121636, type: 3}
+      propertyPath: score
+      value: 
+      objectReference: {fileID: 1549556052}
+    - target: {fileID: 3091981383655770765, guid: 7a5705cb09991974db369bef73121636, type: 3}
+      propertyPath: s
+      value: 
+      objectReference: {fileID: 1549556056}
+    - target: {fileID: 3091981383655770765, guid: 7a5705cb09991974db369bef73121636, type: 3}
+      propertyPath: sc
+      value: 
+      objectReference: {fileID: 1549556056}
+    - target: {fileID: 3091981383655770765, guid: 7a5705cb09991974db369bef73121636, type: 3}
+      propertyPath: customer
+      value: 
+      objectReference: {fileID: 98967805}
     - target: {fileID: 3091981383655770766, guid: 7a5705cb09991974db369bef73121636, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -3031,7 +3057,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 2bd91a929bc11a3499a1dff85f29a726, type: 3}
     m_FontSize: 30
     m_FontStyle: 1
     m_BestFit: 0
@@ -3064,9 +3090,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a750477d6abcfc148afc8fc079ba299e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
   scoreText: {fileID: 1549556054}
-  customer: {fileID: 1927081174}
 --- !u!1 &1610767831
 GameObject:
   m_ObjectHideFlags: 0
@@ -3163,7 +3187,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 2bd91a929bc11a3499a1dff85f29a726, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
@@ -3298,8 +3322,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 2c1db12f4c28544428243258647890b0, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3361,17 +3385,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 3091981383655770762, guid: 7a5705cb09991974db369bef73121636, type: 3}
   spawnDelay: 30
---- !u!114 &1927081174 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3091981383655770765, guid: 7a5705cb09991974db369bef73121636, type: 3}
-  m_PrefabInstance: {fileID: 3091981383945463387}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8b24654c4de3a64a9f9a7aff1b385aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2014208135
 GameObject:
   m_ObjectHideFlags: 0
@@ -3430,7 +3443,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 2bd91a929bc11a3499a1dff85f29a726, type: 3}
     m_FontSize: 27
     m_FontStyle: 0
     m_BestFit: 0
@@ -4176,6 +4189,22 @@ PrefabInstance:
       propertyPath: dialogText
       value: 
       objectReference: {fileID: 2014208137}
+    - target: {fileID: 3091981383655770765, guid: 7a5705cb09991974db369bef73121636, type: 3}
+      propertyPath: score
+      value: 
+      objectReference: {fileID: 1549556052}
+    - target: {fileID: 3091981383655770765, guid: 7a5705cb09991974db369bef73121636, type: 3}
+      propertyPath: s
+      value: 
+      objectReference: {fileID: 1549556056}
+    - target: {fileID: 3091981383655770765, guid: 7a5705cb09991974db369bef73121636, type: 3}
+      propertyPath: sc
+      value: 
+      objectReference: {fileID: 1549556056}
+    - target: {fileID: 3091981383655770765, guid: 7a5705cb09991974db369bef73121636, type: 3}
+      propertyPath: customer
+      value: 
+      objectReference: {fileID: 821187580}
     - target: {fileID: 3091981384058429044, guid: 7a5705cb09991974db369bef73121636, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -4212,6 +4241,10 @@ PrefabInstance:
     - target: {fileID: 6865029211468230475, guid: 15665ac891ca7134ba28de5300ad3416, type: 3}
       propertyPath: m_Name
       value: IceCreamBox_Vanilla
+      objectReference: {fileID: 0}
+    - target: {fileID: 6865029211468230475, guid: 15665ac891ca7134ba28de5300ad3416, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6865029211468230476, guid: 15665ac891ca7134ba28de5300ad3416, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x

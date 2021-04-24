@@ -48,7 +48,7 @@ public class CustomerAI : MonoBehaviour
         dialogbox = obj.FirstOrDefault(g => g.CompareTag("IceCreamNotif"));
         dialogText = obj.FirstOrDefault(g => g.CompareTag("Notif")).GetComponent<Text>();
         playerIC = GameObject.FindGameObjectWithTag("IceCreamDisplay");
-        stackLimit = Random.Range(1, 6);
+        stackLimit = Random.Range(1, 5);
         target = new Vector2(-5.5f, 0f);
         
 

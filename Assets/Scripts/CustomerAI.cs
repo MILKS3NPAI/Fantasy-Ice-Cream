@@ -38,9 +38,13 @@ public class CustomerAI : MonoBehaviour
     //Patience
     public PatienceScript patienceBar;
     public GameObject bar;
-    public int maxPatience = 30;
+    public int maxPatience = 29;
     public float currentPatience;
     public static float score;
+    //Customer locations
+    bool searching;
+    public GameObject[] waitAreas;
+    public List<GameObject> validWaitAreas;
 
     void Start()
     {
@@ -48,9 +52,34 @@ public class CustomerAI : MonoBehaviour
         dialogbox = obj.FirstOrDefault(g => g.CompareTag("IceCreamNotif"));
         dialogText = obj.FirstOrDefault(g => g.CompareTag("Notif")).GetComponent<Text>();
         playerIC = GameObject.FindGameObjectWithTag("IceCreamDisplay");
+
         stackLimit = Random.Range(1, 5);
-        target = new Vector2(-5.5f, 0f);
+
         
+        waitAreas = GameObject.FindGameObjectsWithTag("Stopper");
+        validWaitAreas = new List<GameObject>();
+
+        foreach (GameObject waitArea in waitAreas)
+        {
+            if (waitArea.GetComponent<Customer_Detect>().customerInRange == false)
+            {
+                validWaitAreas.Add(waitArea);
+            }
+        }
+
+        if (validWaitAreas.Any() == false)
+        {
+            Debug.Log("Destoyed");
+            Destroy(gameObject);
+        }
+        else
+        {
+            searching = false;
+            var rnd = Random.Range(0, validWaitAreas.Count);
+            Debug.Log(rnd);
+            target = validWaitAreas[rnd].transform.position;
+        }
+
 
         for (int i = 0; i < stackLimit; i++)
         {
@@ -90,6 +119,7 @@ public class CustomerAI : MonoBehaviour
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("speed", movement.sqrMagnitude);
 
+
         //Patience Timer
         if (enteringShop != true)
         {
@@ -116,12 +146,20 @@ public class CustomerAI : MonoBehaviour
         if (position.x > target.x && enteringShop == true)
         {
             movement.x = -1;
+            movement.y = 0;
+        }
+        else if (position.y < target.y && enteringShop == true)
+        {
+            movement.x = 0;
+            movement.y = 1;
         }
         else if (enteringShop == true)
         {
             GetComponents<AudioSource>().ElementAt(0).Play();
             movement.x = 0;
+            movement.y = 0;
             enteringShop = false;
+            TextBubble.SetActive(true);
         }
 
 
@@ -167,12 +205,9 @@ public class CustomerAI : MonoBehaviour
            
         }
 
-        if (collision.CompareTag("Stopper") && enteringShop == true)
+        if(collision.CompareTag("Stopper"))
         {
-            movement.x = 0;
-            movement.y = 0;
-            enteringShop = false;
-            TextBubble.SetActive(true);
+            collision.GetComponent<Customer_Detect>().customerInRange = true;
         }
     }
 
@@ -182,6 +217,10 @@ public class CustomerAI : MonoBehaviour
         {
             playerInRange = false;
             dialogbox.SetActive(false);
+        }
+        if (collision.CompareTag("Stopper"))
+        {
+            collision.GetComponent<Customer_Detect>().customerInRange = false;
         }
     }
 

@@ -15,7 +15,7 @@ public class Customer_Spawner : MonoBehaviour
     [SerializeField]
     private float spawnDelay = 5;
     private int random;
-
+    public bool spawn = true;
     private void Start()
     {
         Spawn();
@@ -24,7 +24,7 @@ public class Customer_Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ShouldSpawn())
+        if (ShouldSpawn() && spawn == true)
         {
             Spawn();
         }

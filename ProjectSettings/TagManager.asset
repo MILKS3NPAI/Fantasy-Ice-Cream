@@ -10,6 +10,8 @@ TagManager:
   - IceCreamNotif
   - Notif
   - Stopper
+  - MoneyTotal
+  - Lose
   layers:
   - Default
   - TransparentFX

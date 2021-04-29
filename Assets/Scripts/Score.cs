@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Score : MonoBehaviour
 {
     public Text scoreText;
+    public float gScore;
     private void Start()
     {
         CustomerAI.score *= 0;
@@ -15,6 +16,7 @@ public class Score : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        gScore += CustomerAI.score;
         scoreText.text = "$" + CustomerAI.score.ToString("F2");
     }
 }

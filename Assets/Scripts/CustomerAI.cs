@@ -224,7 +224,7 @@ public class CustomerAI : MonoBehaviour
                 movement.x = 1;
             }
             GetComponents<AudioSource>().ElementAt(1).Play();
-            score += myOrder.Count * Mathf.Sqrt(currentPatience) * 0.5f;
+            score += (myOrder.Count * 1.8f) * Mathf.Sqrt(currentPatience) * 0.7f;
         }
 
         else

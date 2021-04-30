@@ -32,19 +32,22 @@ public class CustomerAI : MonoBehaviour
     public float moveSpeed = 5f;
     public Animator animator;
     public Rigidbody2D rb;
-    public Vector2 target;
+    public Vector3 target;
     public Vector2 position;
     Vector2 movement;
     //Patience
     public PatienceScript patienceBar;
     public GameObject bar;
-    public int maxPatience = 29;
+    public int maxPatience = 15;
     public float currentPatience;
     public static float score;
     //Customer locations
     bool searching;
     public GameObject[] waitAreas;
     public List<GameObject> validWaitAreas;
+    float distanceToTargetx;
+    float distanceToTargety;
+    float distanceThreshold = 0.1f;
 
     void Start()
     {
@@ -69,14 +72,12 @@ public class CustomerAI : MonoBehaviour
 
         if (validWaitAreas.Any() == false)
         {
-            Debug.Log("Destoyed");
             Destroy(gameObject);
         }
         else
         {
             searching = false;
             var rnd = Random.Range(0, validWaitAreas.Count);
-            Debug.Log(rnd);
             target = validWaitAreas[rnd].transform.position;
         }
 
@@ -112,7 +113,7 @@ public class CustomerAI : MonoBehaviour
         TextBubble.SetActive(false);
     }
 
-    
+
     void Update()
     {
         animator.SetFloat("Horizontal", movement.x);
@@ -130,10 +131,17 @@ public class CustomerAI : MonoBehaviour
             }
             else
             {
-                movement.x = 1;
                 TextBubble.SetActive(false);
+                if (this.transform.position.x < 4)
+                {
+                    movement.x = 1;
+                }
+                else
+                {
+                    movement.x = -1;
+                }
             }
-           
+
         }
         if (orderDone == true)
         {
@@ -143,15 +151,33 @@ public class CustomerAI : MonoBehaviour
 
         //Position Check
         position = gameObject.transform.position;
-        if (position.x > target.x && enteringShop == true)
+        distanceToTargetx = this.transform.position.x - target.x;
+        distanceToTargety = this.transform.position.y - target.y;
+        if (Mathf.Abs(distanceToTargety) >= distanceThreshold)
         {
-            movement.x = -1;
-            movement.y = 0;
+            if (position.y < target.y && enteringShop == true)
+            {
+                movement.x = 0;
+                movement.y = 1;
+            }
+            else if (position.y > target.y && enteringShop == true)
+            {
+                movement.x = 0;
+                movement.y = -1;
+            }
         }
-        else if (position.y < target.y && enteringShop == true)
+        else if (Mathf.Abs(distanceToTargetx) >= distanceThreshold)
         {
-            movement.x = 0;
-            movement.y = 1;
+            if (position.x > target.x && enteringShop == true)
+            {
+                movement.x = -1;
+                movement.y = 0;
+            }
+            else if (position.x < target.x && enteringShop == true)
+            {
+                movement.x = 1;
+                movement.y = 0;
+            }
         }
         else if (enteringShop == true)
         {
@@ -161,6 +187,9 @@ public class CustomerAI : MonoBehaviour
             enteringShop = false;
             TextBubble.SetActive(true);
         }
+
+       
+        
 
 
         if (Input.GetKeyDown(KeyCode.Space) && playerInRange)
@@ -172,8 +201,8 @@ public class CustomerAI : MonoBehaviour
 
     private void FixedUpdate()
     {
-      
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+
+            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 
     private void OrderCheck()
@@ -185,7 +214,14 @@ public class CustomerAI : MonoBehaviour
             dialogText.text = "Thank you!";
             playerIC.GetComponent<IceCreamDisplay>().Clear();
             orderDone = true;
-            movement.x = 1;
+            if (this.transform.position.x < 4)
+            { 
+                movement.x = 1;
+            }
+            else
+            {
+                movement.x = -1;
+            }
             GetComponents<AudioSource>().ElementAt(1).Play();
             score += myOrder.Count * Mathf.Sqrt(currentPatience) * 0.5f;
         }
@@ -218,7 +254,7 @@ public class CustomerAI : MonoBehaviour
             playerInRange = false;
             dialogbox.SetActive(false);
         }
-        if (collision.CompareTag("Stopper"))
+        if (collision.CompareTag("Stopper") && enteringShop == false)
         {
             collision.GetComponent<Customer_Detect>().customerInRange = false;
         }

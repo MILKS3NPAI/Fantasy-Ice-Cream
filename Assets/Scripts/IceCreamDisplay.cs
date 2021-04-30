@@ -60,7 +60,6 @@ public class IceCreamDisplay : MonoBehaviour
             cone = Instantiate(cone, new Vector3(0, 0, 0), Quaternion.identity);
             cone.transform.SetParent(transform, false);
             cone.transform.localPosition = new Vector2(0, -190);
-            cone.transform.rotation *= Quaternion.Euler(0, 0, 180);
             cone.SetActive(true);
             conePresent = true;
             coneAudio.Play();

@@ -1516,7 +1516,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   display: {fileID: 546598143}
   ConeBox: {fileID: 1664377159163595249}
-  cone: {fileID: 533925117495906568, guid: 091f1f6236cde0245a5959c5c44ea3e7, type: 3}
+  cone: {fileID: 760931344}
   conePresent: 0
   van: {fileID: 2652102962270416428, guid: 3ce6b09826765f24da03df598b6692db, type: 3}
   choco: {fileID: 1379874240898268181, guid: 0227f1e13e988ee4aabbe40ba18dc1a3, type: 3}
@@ -2421,6 +2421,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &760931344 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 533925117495906568, guid: 091f1f6236cde0245a5959c5c44ea3e7, type: 3}
+  m_PrefabInstance: {fileID: 533925116698022495}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &821187580 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3091981383655770762, guid: 7a5705cb09991974db369bef73121636, type: 3}
@@ -5854,19 +5859,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 533925117495906567, guid: 091f1f6236cde0245a5959c5c44ea3e7, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 533925117495906567, guid: 091f1f6236cde0245a5959c5c44ea3e7, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 533925117495906567, guid: 091f1f6236cde0245a5959c5c44ea3e7, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 533925117495906567, guid: 091f1f6236cde0245a5959c5c44ea3e7, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 533925117495906567, guid: 091f1f6236cde0245a5959c5c44ea3e7, type: 3}
       propertyPath: m_RootOrder
@@ -5882,7 +5887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 533925117495906567, guid: 091f1f6236cde0245a5959c5c44ea3e7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 533925117495906567, guid: 091f1f6236cde0245a5959c5c44ea3e7, type: 3}
       propertyPath: m_AnchoredPosition.x

@@ -34,7 +34,7 @@ public class IceCreamDisplay : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && stack < 5 && conePresent == true)
+        if (Input.GetKeyDown(KeyCode.Space) && stack < 4 && conePresent == true)
         {
             GetIceCream();
 

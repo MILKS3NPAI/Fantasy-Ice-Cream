@@ -368,12 +368,14 @@ MonoBehaviour:
   moveSpeed: 5
   animator: {fileID: 3091981383655770764}
   rb: {fileID: 3091981383655770755}
-  target: {x: 0, y: 0}
+  target: {x: 0, y: 0, z: 0}
   position: {x: 0, y: 0}
   patienceBar: {fileID: 3091981384696013731}
   bar: {fileID: 3091981384696013740}
-  maxPatience: 30
+  maxPatience: 15
   currentPatience: 0
+  waitAreas: []
+  validWaitAreas: []
 --- !u!212 &3091981383655770766
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -464,7 +466,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.16334425, y: 0.00000013411045}
+  m_Offset: {x: 0, y: 0.00000013411045}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -475,7 +477,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.55, y: 0.21722937}
+  m_Size: {x: 1.25, y: 0.21722937}
   m_EdgeRadius: 0
 --- !u!50 &3091981383655770755
 Rigidbody2D:

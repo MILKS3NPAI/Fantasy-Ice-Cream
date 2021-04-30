@@ -38,7 +38,7 @@ public class CustomerAI : MonoBehaviour
     //Patience
     public PatienceScript patienceBar;
     public GameObject bar;
-    public int maxPatience = 15;
+    public int maxPatience = 10;
     public float currentPatience;
     public static float score;
     //Customer locations
@@ -61,10 +61,10 @@ public class CustomerAI : MonoBehaviour
         
         waitAreas = GameObject.FindGameObjectsWithTag("Stopper");
         validWaitAreas = new List<GameObject>();
-
+        distanceToTargetx = this.transform.position.x - target.x;
         foreach (GameObject waitArea in waitAreas)
         {
-            if (waitArea.GetComponent<Customer_Detect>().customerInRange == false)
+            if (waitArea.GetComponent<Customer_Detect>().customerInRange == false && Mathf.Abs(this.transform.position.x - waitArea.transform.position.x) < 6)
             {
                 validWaitAreas.Add(waitArea);
             }
@@ -72,6 +72,7 @@ public class CustomerAI : MonoBehaviour
 
         if (validWaitAreas.Any() == false)
         {
+            Debug.Log("destroyed");
             Destroy(gameObject);
         }
         else
@@ -132,13 +133,13 @@ public class CustomerAI : MonoBehaviour
             else
             {
                 TextBubble.SetActive(false);
-                if (this.transform.position.x < 4)
+                if (this.transform.position.x < 0)
                 {
-                    movement.x = 1;
+                    movement.x = -1;
                 }
                 else
                 {
-                    movement.x = -1;
+                    movement.x = 1;
                 }
             }
 
@@ -214,13 +215,13 @@ public class CustomerAI : MonoBehaviour
             dialogText.text = "Thank you!";
             playerIC.GetComponent<IceCreamDisplay>().Clear();
             orderDone = true;
-            if (this.transform.position.x < 4)
+            if (this.transform.position.x < 0)
             { 
-                movement.x = 1;
+                movement.x = -1;
             }
             else
             {
-                movement.x = -1;
+                movement.x = 1;
             }
             GetComponents<AudioSource>().ElementAt(1).Play();
             score += myOrder.Count * Mathf.Sqrt(currentPatience) * 0.5f;

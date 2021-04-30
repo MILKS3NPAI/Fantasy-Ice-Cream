@@ -16,7 +16,7 @@ public class Score : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gScore += CustomerAI.score;
+        gScore = CustomerAI.score;
         scoreText.text = "$" + CustomerAI.score.ToString("F2");
     }
 }

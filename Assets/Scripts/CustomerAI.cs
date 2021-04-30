@@ -72,7 +72,7 @@ public class CustomerAI : MonoBehaviour
 
         if (validWaitAreas.Any() == false)
         {
-            Debug.Log("destroyed");
+          
             Destroy(gameObject);
         }
         else

@@ -19,7 +19,7 @@ public class Game_Manager : MonoBehaviour
     void Start()
     {
         timeLimit = 120;
-        score = s.GetComponent<Score>().gScore;
+        
         lossScreen = GameObject.FindGameObjectWithTag("Lose");
         lossScreen.SetActive(false);
     }
@@ -31,15 +31,19 @@ public class Game_Manager : MonoBehaviour
         timeText.text = "Time Left: " + timeLimit.ToString("0");
         if (timeLimit <= 0)
         {
+            score = s.GetComponent<Score>().gScore;
+ 
             spawner.GetComponent<Customer_Spawner>().spawn = false;
             if (score < 200)
             {
-                lossScreen.SetActive(true); 
+                lossScreen.SetActive(true);
+
             }
             else
             {
                 endText.text = "You paid your Debt for today";
                 lossScreen.SetActive(true);
+
 
             }
         }

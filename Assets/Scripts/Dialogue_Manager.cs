@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Dialogue_Manager : MonoBehaviour
@@ -50,7 +51,7 @@ public class Dialogue_Manager : MonoBehaviour
 
     void EndDialogue()
     {
-        Debug.Log("End of Conversation");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
 

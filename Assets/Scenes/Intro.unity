@@ -259,7 +259,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: '
+
+'
 --- !u!222 &172950250
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -379,6 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae7eb82b1fd02f246a3b6c20547b3352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueText: {fileID: 172950249}
 --- !u!4 &753803745
 Transform:
   m_ObjectHideFlags: 0
@@ -600,9 +603,10 @@ MonoBehaviour:
   dialogue:
     name: Don Ghost
     sentences:
-    - 
-    - 
-    - 
+    - Hello there protagonist
+    - You owe me $200, so get to working
+    - Or else...
+  count: 0
 --- !u!4 &1525037609
 Transform:
   m_ObjectHideFlags: 0

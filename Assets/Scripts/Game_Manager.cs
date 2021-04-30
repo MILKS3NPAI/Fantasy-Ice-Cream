@@ -10,6 +10,7 @@ public class Game_Manager : MonoBehaviour
     [SerializeField]
     public GameObject s;
     public GameObject spawner;
+    public GameObject music;
     public Text endText;
     public Text timeText;
     public Text buttonText;
@@ -36,6 +37,7 @@ public class Game_Manager : MonoBehaviour
         if (timeLimit <= 0)
         {
             score = s.GetComponent<Score>().gScore;
+            music.GetComponent<AudioSource>().Stop();
  
             spawner.GetComponent<Customer_Spawner>().spawn = false;
             if (score < 200)

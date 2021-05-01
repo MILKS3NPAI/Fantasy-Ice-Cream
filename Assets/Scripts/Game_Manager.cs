@@ -14,7 +14,6 @@ public class Game_Manager : MonoBehaviour
     public Text endText;
     public Text timeText;
     public Text buttonText;
-    public Image endImage;
     float score;
     float timeLimit;
     GameObject lossScreen;
@@ -49,12 +48,6 @@ public class Game_Manager : MonoBehaviour
                     GetComponents<AudioSource>().ElementAt(0).Play();
                     gameEnd = true;
                 }
-                if (Difficulty.difficulty == 2)
-                {
-                    buttonText.text = "Accept Death";
-                    endImage.GetComponent<Image>().color = new Color(64/255f, 0f, 0f, 1f);
-                    endText.GetComponent<Text>().color = new Color(1f, 1f, 0f, 1f);
-                }
             }
             else
             {
@@ -65,11 +58,6 @@ public class Game_Manager : MonoBehaviour
                 {
                     GetComponents<AudioSource>().ElementAt(1).Play();
                     gameEnd = true;
-                }
-                if (Difficulty.difficulty == 2)
-                {
-                    endImage.GetComponent<Image>().color = new Color(222/255f, 1f, 1f, 1f);
-                    endText.GetComponent<Text>().color = new Color(0f, 128/255f, 1f, 1f);
                 }
             }
         }

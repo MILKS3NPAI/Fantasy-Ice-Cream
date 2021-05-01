@@ -57,6 +57,11 @@ public class CustomerAI : MonoBehaviour
         playerIC = GameObject.FindGameObjectWithTag("IceCreamDisplay");
 
         stackLimit = Random.Range(1, 5);
+        if (Difficulty.difficulty == 2)
+        {
+            stackLimit = Random.Range(3, 5);
+            maxPatience = 5;
+        }
 
         
         waitAreas = GameObject.FindGameObjectsWithTag("Stopper");

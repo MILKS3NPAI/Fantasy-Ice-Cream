@@ -48,6 +48,10 @@ public class Game_Manager : MonoBehaviour
                     GetComponents<AudioSource>().ElementAt(0).Play();
                     gameEnd = true;
                 }
+                if (Difficulty.difficulty == 2)
+                {
+                    buttonText.text = "Accept Death";
+                }
             }
             else
             {
@@ -58,6 +62,10 @@ public class Game_Manager : MonoBehaviour
                 {
                     GetComponents<AudioSource>().ElementAt(1).Play();
                     gameEnd = true;
+                }
+                if (Difficulty.difficulty == 2)
+                {
+                    buttonText.text = "I survived!";
                 }
             }
         }

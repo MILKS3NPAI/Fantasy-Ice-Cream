@@ -8,6 +8,7 @@ public class MainMenu : MonoBehaviour
 {
     private void Awake()
     {
+        Difficulty.difficulty = 1;
         DOTween.Init(true, true, LogBehaviour.Default);
     }
     public void playClick()

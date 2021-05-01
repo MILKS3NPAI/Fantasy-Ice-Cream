@@ -56,8 +56,15 @@ public class CustomerAI : MonoBehaviour
         dialogText = obj.FirstOrDefault(g => g.CompareTag("Notif")).GetComponent<Text>();
         playerIC = GameObject.FindGameObjectWithTag("IceCreamDisplay");
 
-        stackLimit = Random.Range(1, 5);
-
+        if (Difficulty.difficulty == 1)
+        {
+            stackLimit = Random.Range(1, 5);
+        }
+        else
+        {
+            maxPatience = 5;
+            stackLimit = Random.Range(3, 5);
+        }
         
         waitAreas = GameObject.FindGameObjectsWithTag("Stopper");
         validWaitAreas = new List<GameObject>();

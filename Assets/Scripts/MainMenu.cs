@@ -6,6 +6,10 @@ using DG.Tweening;
 
 public class MainMenu : MonoBehaviour
 {
+    private void Start()
+    {
+        Difficulty.difficulty = 1;
+    }
     private void Awake()
     {
         DOTween.Init(true, true, LogBehaviour.Default);

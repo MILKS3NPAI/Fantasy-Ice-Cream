@@ -5743,6 +5743,7 @@ MonoBehaviour:
   endText: {fileID: 1457668475}
   timeText: {fileID: 608438803}
   buttonText: {fileID: 1937288955}
+  endImage: {fileID: 441610415}
 --- !u!82 &2130548703
 AudioSource:
   m_ObjectHideFlags: 0
